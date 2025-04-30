@@ -4,6 +4,8 @@ import dotenv from 'dotenv';
 import vehicleRoutes from './routes/vehicle.routes';
 import { AppDataSource } from './data-source';
 import { setupSwagger } from './swagger';
+import morgan from 'morgan';
+import { errorHandler } from './middlewares/errorHandler';
 
 dotenv.config();
 
@@ -11,6 +13,9 @@ const app: Express = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
+
+// Add request logging middleware
+app.use(morgan('dev'));
 
 // Initialize TypeORM
 AppDataSource.initialize()
@@ -31,3 +36,6 @@ AppDataSource.initialize()
   .catch((err) => {
     console.error('Error during Data Source initialization:', err);
   });
+
+// Add centralized error handling middleware
+app.use(errorHandler);
