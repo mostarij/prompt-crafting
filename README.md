@@ -1,5 +1,7 @@
 # Vehicle Management API
 
+To setup database follow documentation from https://github.com/burkeholland/prompt-crafting-github-copilot
+
 ## Overview
 The Vehicle Management API is a RESTful service for managing vehicle data. It provides endpoints to create, read, update, and delete vehicle records. The API is built using Node.js, Express, TypeORM, and PostgreSQL.
 
